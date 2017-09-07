@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, Text, View, Dimensions, ListView, ScrollView, FlatList, initialRegion } from 'react-native';
+import { StyleSheet, Text, View, Dimensions, ListView, ScrollView, FlatList, initialRegion, Modal, Button, Image, TouchableHighlight } from 'react-native';
 import MapView from 'react-native-maps';
 import { Ionicons } from '@expo/vector-icons';
 
@@ -208,7 +208,8 @@ class Parks extends React.Component {
         ];
         const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
         this.state = {
-          dataSource: ds.cloneWithRows(parkList)
+          dataSource: ds.cloneWithRows(parkList),
+          modalVisible:false
         }
     }
 
@@ -239,27 +240,47 @@ class Parks extends React.Component {
       dataSource={this.state.dataSource}
       renderRow={(data) =>
       <View
-          style={{flexDirection:'row'}}>
-          <Text style={styles.text}>{data.name}
+        style={{flexDirection:'row'}}>
+        <Text style={styles.text}
+        >{data.name}
           <View style={{left: win.width - 60, height: 40, width: 60}}>
-          <Ionicons name="ios-more" size={32} style={{color:'#FFFFFF', marginTop:18}}
-          />
+            <TouchableHighlight
+            onPress={() =>
+              this.setState({
+                 id: data.id,
+                 name: data.name,
+                 description: data.address,
+                 modalVisible:!this.state.modalVisible
+              })}
+            >
+              <Image
+                style={{height:32, width: 32, marginTop:18}}
+                source={require('../images/more.png')}
+              />
+            </TouchableHighlight>
+              </View>
+            </Text>
           </View>
-
-          </Text>
-        </View>
         }
-          renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator}/>}
-      />
+        renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator}/>}
+    />
+      <View>
+      <Modal
+        animationType={"slide"}
+        transparent={false}
+        visible={this.state.modalVisible}
+      >
+      <ScrollView>
+      <Text>{this.state.name}</Text>
+     </ScrollView>
+      </Modal>
+      </View>
       </View>
 
 
     )
   }
 }
-
-
-
 
 const styles = StyleSheet.create({
   container: {

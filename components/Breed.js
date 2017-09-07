@@ -72,8 +72,8 @@ class Breed extends React.Component {
          <View style={{flex:1,alignItems:'center'}}>
          <Text style={{fontSize:40}}>{this.state.name}</Text>
          <Image
-         style={{height:300, width: win.width}}
-         source={{uri: this.state.picture}}
+           style={{height:300, width: win.width}}
+           source={require('../images/back_button.png')}
          />
          <Text style={{fontSize:20, fontWeight:'bold'}}>Size</Text>
          <Text style={{fontSize:20}}>{this.state.size}</Text>
@@ -92,9 +92,9 @@ class Breed extends React.Component {
 const styles = StyleSheet.create({
   separator: {
     flex: 1,
-    height: 2,
+    height: 10,
     backgroundColor: '#1DE9B6',
-    marginTop: 24,
+    marginTop: 12,
     marginBottom: 12
   },
   container: {

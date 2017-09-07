@@ -62,11 +62,10 @@ class Options extends React.Component {
         </View>
       <View style={{flexDirection:'row', alignItems:'center', marginTop: 100}}>
       <View style={{flexDirection:'column'}}>
-        <TouchableOpacity onPress={() => navigate('Parks') } style={{borderRadius: 80}}>
-        <Animated.Image
+        <TouchableOpacity onPress={() => navigate('Parks') }>
+        <Image
         source={require('../images/parks.png')}
         style={{height:135, width: 135, marginRight:20}}
-
         />
         </TouchableOpacity>
         <Text style={styles.text}>Dog Parks</Text>
