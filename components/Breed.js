@@ -92,9 +92,9 @@ class Breed extends React.Component {
 const styles = StyleSheet.create({
   separator: {
     flex: 1,
-    height: 10,
+    height: 2,
     backgroundColor: '#1DE9B6',
-    marginTop: 12,
+    marginTop: 24,
     marginBottom: 12
   },
   container: {
