@@ -17,8 +17,8 @@ class Breed extends React.Component {
     this.state = {
       dataSource: ds.cloneWithRows(arr),
       modalVisible: false,
-      }
     }
+  }
   render() {
     return (
       <View>
@@ -72,8 +72,8 @@ class Breed extends React.Component {
          <View style={{flex:1,alignItems:'center'}}>
          <Text style={{fontSize:40}}>{this.state.name}</Text>
          <Image
-         style={{height:300, width: win.width}}
-         source={{uri: this.state.picture}}
+           style={{height:300, width: win.width}}
+           source={{uri: this.state.picture}}
          />
          <Text style={{fontSize:20, fontWeight:'bold'}}>Size</Text>
          <Text style={{fontSize:20}}>{this.state.size}</Text>
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
     flex: 1,
     height: 2,
     backgroundColor: '#1DE9B6',
-    marginTop: 24,
+    marginTop: 12,
     marginBottom: 12
   },
   container: {
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
   text: {
    marginLeft: 12,
    fontSize: 25,
-   fontFamily: 'PingFangSC-Ultralight'
+   fontFamily: 'PingFangSC-Light'
  },
  photo: {
     flex:1,
@@ -120,7 +120,13 @@ const styles = StyleSheet.create({
    height: 50,
    width: 50,
    borderRadius: 20
- }
+ },
+ signout: {
+   flex: 1,
+   flexDirection:'row',
+   marginTop: 50,
+   marginLeft:200
+ },
 });
 
 export default Breed;

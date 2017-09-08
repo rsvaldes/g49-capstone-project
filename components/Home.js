@@ -23,14 +23,14 @@ class Home extends React.Component {
        onPress={() => navigate('Options')}
        title="Enter"
        color="#FFFFFF"
-       style={{ fontFamily: 'PingFangSC-Ultralight'}}
+       style={{ fontFamily: 'PingFangSC-Light'}}
        accessibilityLabel="Learn more about this purple button"
        />
        <Button
         onPress={() => navigate('About')}
         title="About"
         color="#FFFFFF"
-        style={{ fontFamily: 'PingFangSC-Ultralight'}}
+        style={{ fontFamily: 'PingFangSC-Light'}}
         accessibilityLabel="Learn more about this purple button"
         />
        </Image>
@@ -51,13 +51,13 @@ const styles = StyleSheet.create({
   welcome: {
     fontSize: 40,
     marginTop:300,
-    fontFamily: 'PingFangSC-Ultralight',
+    fontFamily: 'PingFangSC-Light',
     textAlign:'center',
     color: '#FFFFFF'
   },
   button: {
     fontSize: 40,
-    fontFamily: 'PingFangSC-Ultralight'
+    fontFamily: 'PingFangSC-Light'
   }
 });
 export default Home;

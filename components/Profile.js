@@ -7,14 +7,16 @@ const height = win.height / 4;
 const width = win.width / 2;
 
 class Profile extends React.Component {
-  static navigationOptions = {
-    header: null
-  }
+  // static navigationOptions = {
+  //   header: null
+  // }
   constructor(){
     super()
     this.state = {
       poopCount:2,
-      walks: 3
+      walks: 3,
+      hoursSlept:5,
+      exercise: 2
     }
   }
 
@@ -23,17 +25,22 @@ class Profile extends React.Component {
     const { navigate } = this.props.navigation;
     var poopCount = this.state.poopCount;
     var walks = this.state.walks;
+    var hoursSlept = this.state.hoursSlept;
+    var exercise = this.state.exercise;
     return (
       <View style ={styles.container}>
-      <ScrollView>
-      <View style={styles.back}>
-      <TouchableHighlight onPress={() => navigate('Options')} style={styles.back}>
+      <View style={styles.signout}>
       <Image
-        source={require('../images/back_button.png')}
-        style={{height:50, width: 50}}
-      />
-      </TouchableHighlight>
-      </View>
+        source={require('../images/bells_avatar.jpg')}
+          style={{height:35, width: 35,borderRadius:17.5,marginTop:-12,marginLeft:90}}
+        />
+      <Image
+        source={require('../images/signout.png')}
+        style={{height:30, width: 30,marginTop:-10,marginLeft:5}}
+        />
+        </View>
+      <ScrollView style={{marginLeft:30}}>
+
       <View style={{flexDirection:'row'}}>
       <Text style={styles.header}>Bella</Text>
       <Image
@@ -43,22 +50,21 @@ class Profile extends React.Component {
       </View>
       <Image
         source={require('../images/bells_avatar.jpg')}
-        style={{height:height, width:width, borderRadius:height/2,marginTop:10 }}
+        style={{height:height, width:width, borderRadius:height/2,marginTop:5, marginLeft:40 }}
         />
 
         <Text style={{fontSize:20, fontWeight:'bold', marginTop:20}}>What I Love: <Text style={styles.info}>Tug-of-War, Fetch, Cuddling, Treats</Text></Text>
         <Text style={styles.main}>What I Don't Love:
-        <Text style={styles.info}>Lettuce</Text></Text>
-        <Text style={styles.main}>Allergies:  <Text style={styles.info}>Bee stings</Text></Text>
-        <Text style={styles.main}>My Weight: <Text style={styles.info}>24 lbs</Text></Text>
+        <Text style={styles.info}> Lettuce</Text></Text>
+        <Text style={styles.main}>Allergies: <Text style={styles.info}>Bee stings</Text></Text>
 
-        <Text style={styles.header}>This Week:</Text>
-        <View style={{flexDirection:'row', marginTop: 20}}>
+        <Text style={{fontSize:50,fontFamily: 'PingFangSC-Light', marginLeft:10}}>This Week:</Text>
+        <View style={{flexDirection:'row', marginTop: 20, marginLeft:40}}>
         <View style={{flexDirection:'column'}}>
         <Image
           source={require('../images/poop.png')}
           style={{height:70, width:70, borderRadius:35, marginRight:20}}
-          />
+        />
           <View style={{flexDirection:'row', marginLeft: 7}}>
           <Button
             onPress={() => this.setState({
@@ -105,7 +111,7 @@ class Profile extends React.Component {
                 </View>
             </View>
             </View>
-            <View style={{flexDirection:'row', marginTop: 20}}>
+            <View style={{flexDirection:'row', marginTop: 20,marginLeft:40}}>
             <View style={{flexDirection:'column'}}>
             <Image
               source={require('../images/sleep.png')}
@@ -114,16 +120,16 @@ class Profile extends React.Component {
               <View style={{flexDirection:'row', marginLeft: 7}}>
               <Button
                 onPress={() => this.setState({
-                  poopCount: poopCount = poopCount - 1
+                  hoursSlept: hoursSlept = hoursSlept - 1
                 }) }
                 title="-"
                 color="#841584"
                 accessibilityLabel="Learn more about this purple button"
                 />
-                <Text style={{marginTop:11}}>{this.state.poopCount}</Text>
+                <Text style={{marginTop:11}}>{this.state.hoursSlept}</Text>
                 <Button
                   onPress={() => this.setState({
-                    poopCount: poopCount = poopCount + 1
+                    hoursSlept: hoursSlept = hoursSlept + 1
                   }) }
                   title="+"
                   color="#841584"
@@ -139,16 +145,16 @@ class Profile extends React.Component {
                 <View style={{flexDirection:'row', marginLeft:26}}>
                 <Button
                   onPress={() => this.setState({
-                    walks: walks = walks - 1
+                    exercise: exercise = exercise - 1
                   }) }
                   title="-"
                   color="#841584"
                   accessibilityLabel="Learn more about this purple button"
                   />
-                  <Text style={{marginTop:11}}>{this.state.walks}</Text>
+                  <Text style={{marginTop:11}}>{this.state.exercise}</Text>
                   <Button
                     onPress={() => this.setState({
-                      walks: walks = walks + 1
+                      exercise: exercise = exercise + 1
                     }) }
                     title="+"
                     color="#841584"
@@ -169,27 +175,38 @@ const styles = StyleSheet.create({
     alignItems:'center',
     justifyContent:'center',
     backgroundColor:'#429ea6',
-    marginTop: -30
   },
   header: {
     fontSize:50,
-    fontFamily: 'PingFangSC-Ultralight'
+    fontFamily: 'PingFangSC-Light',
+    marginLeft:58
   },
   main: {
     fontWeight:'bold',
     fontSize: 20,
-    fontFamily: 'PingFangSC-Ultralight'
+    fontFamily: 'PingFangSC-Light',
+    textAlign:'center'
   },
   info: {
     fontWeight:'normal',
     fontSize: 20,
-    fontFamily: 'PingFangSC-Ultralight'
+    fontFamily: 'PingFangSC-Light',
+    textAlign:'center'
   },
   back: {
     flex: 1,
     flexDirection:'row',
     alignContent:'flex-start',
-    marginTop:20
-  }});
+    marginTop:20,
+    marginLeft:-10
+  },
+  signout: {
+    flex: 1,
+    flexDirection:'row',
+    marginTop: 25,
+    marginLeft:200,
+    marginBottom:-550
+  },
+});
 
 export default Profile;
