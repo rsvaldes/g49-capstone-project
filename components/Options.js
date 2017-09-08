@@ -34,11 +34,11 @@ class Options extends React.Component {
       <View style={styles.signout}>
       <Image
         source={require('../images/bells_avatar.jpg')}
-          style={{height:35, width: 35,borderRadius:17.5,marginTop:-12,marginLeft:90}}
+          style={{height:35, width: 35,borderRadius:17.5,marginTop:17,marginLeft:50}}
         />
       <Image
         source={require('../images/signout.png')}
-        style={{height:30, width: 30,marginTop:-10,marginLeft:5}}
+        style={{height:35, width: 35,marginTop:17,marginLeft:7,marginRight:8}}
         />
         </View>
       <View style={{flexDirection:'row', alignItems:'center', marginTop: 100}}>

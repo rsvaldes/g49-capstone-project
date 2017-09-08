@@ -32,11 +32,11 @@ class Profile extends React.Component {
       <View style={styles.signout}>
       <Image
         source={require('../images/bells_avatar.jpg')}
-          style={{height:35, width: 35,borderRadius:17.5,marginTop:-12,marginLeft:90}}
+          style={{height:35, width: 35,borderRadius:17.5,marginTop:-20,marginLeft:50}}
         />
       <Image
         source={require('../images/signout.png')}
-        style={{height:30, width: 30,marginTop:-10,marginLeft:5}}
+        style={{height:35, width: 35,marginTop:-20,marginLeft:7,marginRight:8}}
         />
         </View>
       <ScrollView style={{marginLeft:30}}>
@@ -45,7 +45,7 @@ class Profile extends React.Component {
       <Text style={styles.header}>Bella</Text>
       <Image
         source={require('../images/paw.png')}
-        style={{height:50, width:50, borderRadius:30}}
+        style={{height:50, width:50, borderRadius:30, marginTop:60}}
       />
       </View>
       <Image
@@ -58,8 +58,8 @@ class Profile extends React.Component {
         <Text style={styles.info}> Lettuce</Text></Text>
         <Text style={styles.main}>Allergies: <Text style={styles.info}>Bee stings</Text></Text>
 
-        <Text style={{fontSize:50,fontFamily: 'PingFangSC-Light', marginLeft:10}}>This Week:</Text>
-        <View style={{flexDirection:'row', marginTop: 20, marginLeft:40}}>
+        <Text style={{fontSize:50,fontFamily: 'PingFangSC-Light',marginRight:30}}>This Week:</Text>
+        <View style={{flexDirection:'row', marginTop: 20, marginLeft:35}}>
         <View style={{flexDirection:'column'}}>
         <Image
           source={require('../images/poop.png')}
@@ -111,7 +111,7 @@ class Profile extends React.Component {
                 </View>
             </View>
             </View>
-            <View style={{flexDirection:'row', marginTop: 20,marginLeft:40}}>
+            <View style={{flexDirection:'row', marginTop: 20,marginLeft:35}}>
             <View style={{flexDirection:'column'}}>
             <Image
               source={require('../images/sleep.png')}
@@ -179,7 +179,8 @@ const styles = StyleSheet.create({
   header: {
     fontSize:50,
     fontFamily: 'PingFangSC-Light',
-    marginLeft:58
+    marginLeft:58,
+    marginTop: 50
   },
   main: {
     fontWeight:'bold',

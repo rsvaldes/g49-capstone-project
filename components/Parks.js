@@ -3,15 +3,12 @@ import PropTypes from 'prop-types';
 import { StyleSheet, Text, View, Dimensions, ListView, ScrollView, FlatList, initialRegion, Modal, Button, Image, TouchableHighlight } from 'react-native';
 import MapView from 'react-native-maps';
 import { Ionicons } from '@expo/vector-icons';
-import getDirections from 'react-native-google-maps-directions'
+import getDirections from 'react-native-google-maps-directions';
 
 const win = Dimensions.get('window');
 
-  // static navigationOptions = {
-class Parks extends React.Component {
-  //   header: null
-  // }
 
+class Parks extends React.Component {
   constructor(props) {
     super(props);
       let parkList = [
@@ -210,12 +207,15 @@ class Parks extends React.Component {
         const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
         this.state = {
           dataSource: ds.cloneWithRows(parkList),
-          modalVisible:false
+          modalVisible:false,
         }
     }
 
 
+
+
   render() {
+    console.log('state',this.state.dataSource._dataBlob.s1[0].latlng.latitude);
     return (
       <View style={{backgroundColor: '#429ea6'}}>
       <MapView
@@ -250,7 +250,29 @@ class Parks extends React.Component {
              name: data.name,
              address: data.address,
              picture: data.picture,
-             modalVisible:!this.state.modalVisible
+             latitude: data.latlng.latitude,
+             longitude:data.latlng.longitude,
+             modalVisible:!this.state.modalVisible,
+             handleGetDirections:        handleGetDirections = () => {
+                     const data = {
+                        source: {
+                         latitude: 40.016636,
+                         longitude: -105.281708
+                       },
+                       destination: {
+                         latitude: this.state.dataSource._dataBlob.s1.latlng.latitude,
+                         longitude: this.state.dataSource._dataBlob.s1.latlng.longitude
+                       },
+                       params: [
+                         {
+                           key: "dirflg",
+                           value: "w"
+                         }
+                       ]
+                     }
+
+                     getDirections(data)
+                   }
           })}
         >{data.name}
           <View style={{left: win.width - 60, height: 40, width: 60}}>
@@ -290,7 +312,9 @@ class Parks extends React.Component {
             style={{height:300, width: win.width}}
             source={{uri: this.state.picture}}
           />
-          <Text style={{fontSize:40, textAlign:'center',marginTop:30}}>{this.state.address}</Text>
+          <Text
+          onPress={this.state.handleGetDirections}
+          style={{fontSize:40, textAlign:'center',marginTop:30}}>{this.state.address}</Text>
           </View>
          </ScrollView>
         </Modal>
@@ -312,7 +336,7 @@ const styles = StyleSheet.create({
     // marginTop: 5
   },
   text: {
-    fontSize: 18,
+    fontSize: 16,
     marginLeft:10,
     fontFamily: 'PingFangSC-Light',
     marginBottom:16,
