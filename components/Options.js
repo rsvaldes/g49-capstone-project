@@ -5,18 +5,16 @@ import { StyleSheet, Text, View, WebView, Button, TouchableHighlight, Image, Sta
 const win = Dimensions.get('window');
 
 class Options extends React.Component {
-  static navigationOptions = {
-    header: null
-  }
+  // static navigationOptions = {
+  //   header: null
+  // }
   constructor(){
     super();
-    this.spinValue = new Animated.Value(0);
     this.state = {
       breedList: [],
     }
   }
   componentDidMount() {
-    this.spin();
     return fetch('https://shelby-capstone-server.herokuapp.com/breeds')
     .then((res) => res.json())
     .then((resJson) => {
@@ -25,25 +23,8 @@ class Options extends React.Component {
       });
     })
   }
-  spin () {
-  this.spinValue.setValue(0)
-  Animated.timing(
-    this.spinValue,
-    {
-      toValue: 1,
-      duration: 4000,
-      easing: Easing.linear
-    }
-  ).start(() => this.spin())
-}
 
   render() {
-    const spin = this.spinValue.interpolate({
-    inputRange: [0, 1],
-    outputRange: ['0deg', '360deg']
-  })
-
-
     const { navigate } = this.props.navigation;
 
     return (
@@ -53,11 +34,11 @@ class Options extends React.Component {
       <View style={styles.signout}>
       <Image
         source={require('../images/bells_avatar.jpg')}
-          style={{height:50, width: 50,borderRadius:25, flexDirection:'row', justifyContent:'flex-start'}}
+          style={{height:35, width: 35,borderRadius:17.5,marginTop:-12,marginLeft:90}}
         />
       <Image
         source={require('../images/signout.png')}
-        style={{height:40, width: 40}}
+        style={{height:30, width: 30,marginTop:-10,marginLeft:5}}
         />
         </View>
       <View style={{flexDirection:'row', alignItems:'center', marginTop: 100}}>
@@ -120,13 +101,13 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 20,
-    fontFamily: 'PingFangSC-Ultralight',
+    fontFamily: 'PingFangSC-Light',
     textAlign:'center'
   },
   bottom: {
     fontSize:20,
     marginBottom:40,
-    fontFamily: 'PingFangSC-Ultralight',
+    fontFamily: 'PingFangSC-Light',
     textAlign:'center'
   }
 });
